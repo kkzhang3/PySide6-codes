@@ -54,8 +54,10 @@ class BoxLayoutDemo(QWidget):
         _str = ''
         for w in self.findChildren(QPushButton):
             # if hasattr(w,'text'):
-            vPolicy = w.sizePolicy().verticalPolicy().name.decode('utf8')
-            hPolicy = w.sizePolicy().horizontalPolicy().name.decode('utf8')
+            # vPolicy = w.sizePolicy().verticalPolicy().name.decode('utf8')
+            # hPolicy = w.sizePolicy().horizontalPolicy().name.decode('utf8')
+            vPolicy = w.sizePolicy().verticalPolicy().name
+            hPolicy = w.sizePolicy().horizontalPolicy().name
             sizeHint = w.sizeHint().toTuple()
             _str = _str + f'按钮：{w.text()}，sizeHint:{sizeHint}，sizePolicy:{vPolicy}/{hPolicy}' + '\n'
         self.label = QLabel()
@@ -70,13 +72,17 @@ class BoxLayoutDemo(QWidget):
             stretch = layout.stretch(i)
             if isinstance(item.widget(), QPushButton):
                 w = item.widget()
-                vPolicy = w.sizePolicy().verticalPolicy().name.decode('utf8')
-                hPolicy = w.sizePolicy().horizontalPolicy().name.decode('utf8')
+                # vPolicy = w.sizePolicy().verticalPolicy().name.decode('utf8')
+                # hPolicy = w.sizePolicy().horizontalPolicy().name.decode('utf8')
+                vPolicy = w.sizePolicy().verticalPolicy().name
+                hPolicy = w.sizePolicy().horizontalPolicy().name
                 sizeHint = item.sizeHint().toTuple()
                 _str2 = _str2 + f'num:{i}，按钮:{w.text()}，stretch:{stretch}，sizeHint:{sizeHint}，sizePolicy:{vPolicy}/{hPolicy}' + '\n'
             elif isinstance(item, QSpacerItem):
-                vPolicy = item.sizePolicy().verticalPolicy().name.decode('utf8')
-                hPolicy = item.sizePolicy().horizontalPolicy().name.decode('utf8')
+                # vPolicy = item.sizePolicy().verticalPolicy().name.decode('utf8')
+                # hPolicy = item.sizePolicy().horizontalPolicy().name.decode('utf8')
+                vPolicy = item.sizePolicy().verticalPolicy().name
+                hPolicy = item.sizePolicy().horizontalPolicy().name
                 sizeHint = item.sizeHint().toTuple()
                 _str2 = _str2 + f'num:{i}，QSpacerItem，stretch:{stretch}，sizeHint:{sizeHint}，sizePolicy:{vPolicy}/{hPolicy}' + '\n'
             else:  # 处理嵌套Layout
